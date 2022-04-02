@@ -12,6 +12,7 @@ router.get('/', (req, res) => {
       'post_url',
       'title',
       'created_at',
+      'img_url',
       [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
     ],
     include: [
@@ -46,6 +47,7 @@ router.get('/:id', (req, res) => {
       'post_url',
       'title',
       'created_at',
+      'img_url',
       [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
     ],
     include: [
@@ -90,6 +92,49 @@ router.post('/', withAuth, (req, res) => {
     });
 });
 
+router.post('/', async (req,res)=>{
+
+  try{
+      const file = req.files.file;
+      const fileName = file.name;
+      const size = file.data.length;
+      const extension = path.extname(fileName);
+
+      const allowedExtensions = /png|jpeg|jpg|gif/;
+
+      if (!allowedExtensions.test(extension)) throw "Unsupported extension!";
+      if (size > 5000000) throw "File must be less than 5MB";
+
+
+      const md5 = file.md5;
+      const URL = "/uploads/" + md5 + extension;
+
+      await util.promisify(file.mv)("./public" + URL);
+      res.json({
+          message: "File uploaded successfully",
+          url: URL,
+          name: fileName
+      })
+
+      Post.create({
+          title: fileName,
+          post_url: fileName,
+          user_id: '1',
+          img_url: URL
+        })
+  
+      
+  }catch(err){
+      console.log(err);
+      res.status(500).json({
+          message: err,
+      })
+  }
+  
+  
+})
+
+
 router.put('/upvote', withAuth, (req, res) => {
   // custom static method created in models/Post.js
   Post.upvote({ ...req.body, user_id: req.session.user_id }, { Vote, Comment, User })
@@ -99,6 +144,7 @@ router.put('/upvote', withAuth, (req, res) => {
       res.status(500).json(err);
     });
 });
+
 
 router.put('/:id', withAuth, (req, res) => {
   Post.update(
@@ -143,5 +189,7 @@ router.delete('/:id', withAuth, (req, res) => {
       res.status(500).json(err);
     });
 });
+
+
 
 module.exports = router;
