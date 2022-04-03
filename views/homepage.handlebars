@@ -1,8 +1,16 @@
-<ol class="post-list">
-  {{#each posts as |post|}}
+<div>You are on the homepage</div>
+
+<ul class="post-list">
+  {{#each posts}}
   <li>
-    {{> post-info post }}
+    <article class="post">
+      <div class="title">
+      </div>
+      <div class="meta">
+
+        <img src= "{{img_url}}" height="200px", length="200px"/>
+      </div>
+    </article>
   </li>
   {{/each}}
-</ol>
-
+</ul>
