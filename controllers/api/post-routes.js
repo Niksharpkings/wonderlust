@@ -13,6 +13,10 @@ router.get('/', (req, res) => {
       'title',
       'created_at',
       'img_url',
+<<<<<<< HEAD
+=======
+    
+>>>>>>> develop_nik
       [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
     ],
     include: [
