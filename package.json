@@ -11,26 +11,25 @@
     "type": "git",
     "url": "git+https://github.com/niksharpkings/wanderlust.git"
   },
-
   "bugs": {
     "url": "https://github.com/niksharpkings/wanderlust/issues"
   },
-
   "author": "Lanika, Rachel, Jose, Arbi, Nik, ED",
   "license": "ISC",
   "homepage": "https://github.com/niksharpkings/wanderlust#readme",
   "dependencies": {
-    "bower": "^1.8.14",
     "bcrypt": "^5.0.1",
-    "console.table": "^0.10.0",
+    "bootstrap": "^5.1.3",
+    "bower": "^1.8.14",
     "connect-session-sequelize": "^6.1.1",
+    "console.table": "^0.10.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-handlebars": "^6.0.3",
     "express-session": "^1.17.0",
+    "handlebars": "^4.7.3",
     "inquirer": "^8.2.2",
     "morgan": "^1.10.0",
-    "handlebars": "^4.7.3",
     "mysql": "^2.18.1",
     "mysql2": "^2.1.0",
     "norman": "^0.1.0",
