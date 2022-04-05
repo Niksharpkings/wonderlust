@@ -14,18 +14,23 @@
   </form>
 </section>
 
-{{#if posts.length}}
+ {{#if posts.length}}
 <section>
   <h2>Your Posts</h2>
-  <ol>
-    {{#each posts as |post|}}
-    <li>
-      {{> post-info post}}
-      <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit post</a>
-    </li>
-    {{/each}}
-  </ol>
+  <ul class="post-list">
+  {{#each posts}}
+  <li>
+    <article class="post">
+      <div class="title">
+      </div>
+      <div class="meta">
+        <img src= "{{post_url}}" height="200px", length="200px"/>
+      </div>
+    </article>
+  </li>
+  {{/each}}
+</ul>
 </section>
 {{/if}}
-
+</section>
 <script src="/javascript/add-post.js"></script>

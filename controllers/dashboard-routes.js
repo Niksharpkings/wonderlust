@@ -84,4 +84,49 @@ router.get('/edit/:id', withAuth, (req, res) => {
     });
 });
 
+//after image is uipload, store buffer data in post.image field. to render this field. 
+
+router.post('/', withAuth, async (req,res)=>{
+
+  try{
+      const file = req.files.file;
+      const fileName = file.name;
+      const size = file.data.length;
+      const extension = path.extname(fileName);
+
+      const allowedExtensions = /png|jpeg|jpg|gif/;
+
+      if (!allowedExtensions.test(extension)) throw "Unsupported extension!";
+      if (size > 5000000) throw "File must be less than 5MB";
+
+
+      const md5 = file.md5;
+      const URL = "/uploads/" + md5 + extension;
+
+      await util.promisify(file.mv)("./public" + URL);
+      res.redirect('/dashboard')
+
+      Post.create({
+        title: fileName,
+        //image:file.data,
+        post_url: URL,
+        user_id: req.session.user_id
+      })
+        .then(dbPostData => res.json(dbPostData))
+        .catch(err => {
+          console.log(err);
+          res.status(500).json(err);
+        });
+      
+      }
+      catch(err){
+        console.log(err);
+        res.status(500).json({
+            message: err,
+        })
+    }
+
+});
+
+
 module.exports = router;
