@@ -34,9 +34,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/test', (req, res) => {
+app.get('/', (req, res) => {
   console.log('test');
-  res.render('test-view');
+  res.render('homepage');
 });
 
 app.use(require('./controllers/'));
@@ -45,7 +45,7 @@ app.use(require('./controllers/'));
 
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, './public/index.html'));
+  res.sendFile(path.join(__dirname, './'));
 });
 
 

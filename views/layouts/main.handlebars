@@ -10,19 +10,38 @@
   <meta name="keywords" content="">
   <meta name="description" content="">
   <meta name="author" content="">
-  <link rel="stylesheet" href="assets/css/bootstrap.min.css" media="all">
-  {{!-- <link rel="stylesheet" href="assets/css/style.css"> --}}
-  <link rel="stylesheet" href="assets/css/responsive.css" media="all">
-  <link rel="icon" href="assets/images/fevicon.png" type="image/gif" />
-  <link rel="stylesheet" href="assets/css/jquery.mCustomScrollbar.min.css" media="all">
+  <link rel="stylesheet" href="/public/assets/css/style.css">
+  <link rel="stylesheet" href="/public/assets/css/responsive.css" media="all">
+  <link rel="icon" href="/images/fevicon.png" type="image/gif" />
+  <link rel="stylesheet" href="/assets/css/jquery.mCustomScrollbar.min.css" media="all">
   <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" media="all">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
     media="screen">
-</head>
+<link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/album/">
+ <!-- Bootstrap core CSS -->
+<link href="/assets/css/bootstrap.min.css" rel="stylesheet">
 
-<body>
-  <div class="wrapper">
-    <header>
+
+{{!-- this is for the css for the album page aka homepage, put in public/stylesheet/style.css --}}
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+</head>
+<div class="wrapper">>
+ <header>
       <h1>
         <a href="/">WanderLust</a>
       </h1>
@@ -35,25 +54,28 @@
         {{/if}}
       </nav>
     </header>
+</div>
+
+<body>
     <main>
       {{{ body }}}
     </main>
-    <footer>
-      Thanks for visiting!
-    </footer>
-  </div>
-
-  {{#if loggedIn}}
-  <script src="/javascript/logout.js" async></script>
-  {{/if}}
-      <script src="assets/js/jquery.min.js" async></script>
-      <script src="assets/js/popper.min.js" async></script>
-      <script src="assets/js/bootstrap.bundle.min.js" async></script>
-      <script src="assets/js/jquery-3.0.0.min.js" async></script>
-      <script src="assets/js/plugin.js" async></script>
-      <script src="assets/js/jquery.mCustomScrollbar.concat.min.js" async></script>
-      <script src="assets/js/custom.js" async></script>
-      <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js" async></script>
 </body>
+
+
+{{#if loggedIn}}
+<script src="../javascript/logout.js" async></script>
+{{/if}}
+<script src="../assets/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/js/jquery.min.js" async></script>
+<script src="../assets/js/popper.min.js" async></script>
+<script src="../assets/js/bootstrap.bundle.min.js" async></script>
+<script src="../assets/js/jquery-3.0.0.min.js" async></script>
+<script src="../assets/js/plugin.js" async></script>
+<script src="../assets/js/jquery.mCustomScrollbar.concat.min.js" async></script>
+<script src="../assets/js/custom.js" async></script>
+<script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js" async></script>
+<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/javascript/login.js"></script>
 
 </html>
