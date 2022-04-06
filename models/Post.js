@@ -24,6 +24,9 @@ Post.init(
         validate: {
         }
       },
+      image: {
+        type: DataTypes.BLOB("long")
+      },
       user_id: {
         type: DataTypes.INTEGER,
         references: {

@@ -1,33 +1,50 @@
-<form class="login-form">
-  <div>
-    <label for="email-login">email:</label>
-    <input type="text" id="email-login" />
-  </div>
-  <div>
-    <label for="password-login">password:</label>
-    <input type="password" id="password-login" />
-  </div>
-  <div>
-    <button type="submit">login</button>
-  </div>
-</form>
+<div class="text-center">
 
-<form class="signup-form">
-  <div>
-    <label for="username-signup">username:</label>
-    <input type="text" id="username-signup" />
+  <div class="form-signin">
+    <form class="login-form">
+      <img class="mb-4" src="/uploads/wanderlustlogo.png" alt="" width="151" height="46">
+      <h1 class="h3 mb-3 fw-normal">Please Sign-In</h1>
+
+      <div class="form-floating">
+        <input type="email" id="email-login" placeholder="name@example.com">
+        <label for="email-login">Email address</label>
+      </div>
+      <div class="form-floating">
+        <input type="password" id="password-login" placeholder="Password">
+        <label for="password-login">Password</label>
+      </div>
+
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+      </div>
+      <button class="btn btn-lg btn-primary" type="submit">Sign in</button>
+    </form>
+
+    <br>
+    <br>
+
+    <form class="signup-form">
+      <h1 class="h3 mb-3 fw-normal">Or Please Sign-Up</h1>
+      <div>
+        <label for="username-signup">username:</label>
+        <input type="text" id="username-signup" />
+      </div>
+      <div>
+        <label for="email-signup">email:</label>
+        <input type="text" id="email-signup" />
+      </div>
+      <div>
+        <label for="password-signup">password:</label>
+        <input type="password" id="password-signup" />
+      </div>
+      <div>
+        <button class="btn btn-lg btn-primary" type="submit">Sign in</button>
+      </div>
+    </form>
   </div>
-  <div>
-    <label for="email-signup">email:</label>
-    <input type="text" id="email-signup" />
-  </div>
-  <div>
-    <label for="password-signup">password:</label>
-    <input type="password" id="password-signup" />
-  </div>
-  <div>
-    <button type="submit">signup</button>
-  </div>
-</form>
+  <p class="mt-5 mb-3 text-muted">UCLAx wanderlust &copy; 2017–2022</p>
+</div>
 
 <script src="/javascript/login.js"></script>

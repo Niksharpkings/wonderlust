@@ -10,50 +10,93 @@
   <meta name="keywords" content="">
   <meta name="description" content="">
   <meta name="author" content="">
-  <link rel="stylesheet" href="assets/css/bootstrap.min.css" media="all">
-  {{!-- <link rel="stylesheet" href="assets/css/style.css"> --}}
-  <link rel="stylesheet" href="assets/css/responsive.css" media="all">
-  <link rel="icon" href="assets/images/fevicon.png" type="image/gif" />
-  <link rel="stylesheet" href="assets/css/jquery.mCustomScrollbar.min.css" media="all">
+
+
+  <link rel="icon" href="/images/fevicon.png" type="image/gif" />
+  <link rel="stylesheet" href="/assets/css/jquery.mCustomScrollbar.min.css" media="all">
   <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" media="all">
+  <link href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap" rel="stylesheet"
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
     media="screen">
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/album/">
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sign-in/">
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/blog/">
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/cheatsheet/">
+  <link rel="stylesheet" href="/public/assets/css/blog.css">
+  <link rel="stylesheet" href="/public/assets/css/style.css">
+  <link rel="stylesheet" href="/public/assets/css/signin.css">
+  <link rel="stylesheet" href="/public/assets/css/responsive.css" media="all">
+  <!-- Bootstrap core CSS -->
+  <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+  
+  
+  </head>
+
+  {{!-- this is for the css for the album page aka homepage, put in public/stylesheet/style.css --}}
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
 </head>
 
-<body>
-  <div class="wrapper">
-    <header>
-      <h1>
-        <a href="/">WanderLust</a>
-      </h1>
-      <nav>
-        {{#if loggedIn}}
-        <a href="/dashboard">dashboard</a>
-        <button id="logout" class="btn-no-style">logout</button>
-        {{else}}
-        <a href="/login">login</a>
-        {{/if}}
-      </nav>
-    </header>
-    <main>
-      {{{ body }}}
-    </main>
-    <footer>
-      Thanks for visiting!
-    </footer>
-  </div>
+<header>
+  <nav>
+    <div class="navbar navbar-dark bg-dark shadow-sm">
+      <div class="container">
+        <a href="/" class="navbar-brand d-flex align-items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor"
+            stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2"
+            viewBox="0 0 24 24">
+            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
+            <circle cx="12" cy="13" r="4" />
+          </svg>
+          <strong href="/">WanderLust</strong>
+      </div>
+    </div>
+  </nav>
 
   {{#if loggedIn}}
-  <script src="/javascript/logout.js" async></script>
+  <a href="/dashboard" class="btn btn-primary my-2">Dashboard</a>
+  <a href="/contact" class="btn btn-primary my-2">Contact Dev</a>
+  <a id="logout" class="btn btn-secondary my-2">logout</a>
+  {{else}}
+  <a href="/about" class="btn btn-primary my-2">About</a>
+  <a id="login" href="/login" class="btn btn-secondary my-2">Login</a>
   {{/if}}
-      <script src="assets/js/jquery.min.js" async></script>
-      <script src="assets/js/popper.min.js" async></script>
-      <script src="assets/js/bootstrap.bundle.min.js" async></script>
-      <script src="assets/js/jquery-3.0.0.min.js" async></script>
-      <script src="assets/js/plugin.js" async></script>
-      <script src="assets/js/jquery.mCustomScrollbar.concat.min.js" async></script>
-      <script src="assets/js/custom.js" async></script>
-      <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js" async></script>
+</header>
+
+<body>
+  <main>
+    {{{ body }}}
+  </main>
 </body>
+
+
+{{#if loggedIn}}
+<script src="../javascript/logout.js" async></script>
+{{/if}}
+<script src="/public/assets/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/js/jquery.min.js" async></script>
+<script src="../assets/js/popper.min.js" async></script>
+<script src="../assets/js/bootstrap.bundle.min.js" async></script>
+<script src="../assets/js/jquery-3.0.0.min.js" async></script>
+<script src="../assets/js/plugin.js" async></script>
+<script src="../assets/js/jquery.mCustomScrollbar.concat.min.js" async></script>
+<script src="../assets/js/custom.js" async></script>
+<script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js" async></script>
+<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/javascript/login.js"></script>
 
 </html>

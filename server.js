@@ -2,6 +2,7 @@ const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
+const fileUpload = require("express-fileupload");
 
 
 const app = express();
@@ -21,6 +22,11 @@ const sess = {
 };
 
 app.use(session(sess));
+
+app.use(
+  fileUpload()
+);
+app.use(session(sess));
 app.use(express.static('public'));
 
 const helpers = require('./utils/helpers');
@@ -32,30 +38,27 @@ app.set('view engine', 'handlebars');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(express.static(path.join(__dirname, 'public/javascript')));
+
+app.use(express.static(path.join(__dirname, 'public/uploads')));
+
+app.get('/', (req, res) => {
+  res.render('homepage');
+});
 
 app.use(require('./controllers/'));
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, './public/index.html'));
-});
 
-app.get('contact', (req, res) => {
-  res.sendFile(path.join(__dirname, './public/contact.html'));
-});
-
-app.get('/about', (req, res) => {
-  res.sendFile(path.join(__dirname, './public/about.html'));
-});
-
-app.get('/images-db', (req, res) => {
-  res.sendFile(path.join(__dirname, './public/images-db.html'));
-});
 
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, './public/index.html'));
+  res.sendFile(path.join(__dirname, './'));
 });
+
+
 
 
 sequelize.sync({ force: false }).then(() => {
