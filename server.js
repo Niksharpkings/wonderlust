@@ -2,6 +2,7 @@ const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
+const fileUpload = require("express-fileupload");
 
 
 const app = express();
@@ -21,6 +22,11 @@ const sess = {
 };
 
 app.use(session(sess));
+
+app.use(
+  fileUpload()
+);
+app.use(session(sess));
 app.use(express.static('public'));
 
 const helpers = require('./utils/helpers');
@@ -32,10 +38,14 @@ app.set('view engine', 'handlebars');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(express.static(path.join(__dirname, 'public/javascript')));
+
+app.use(express.static(path.join(__dirname, 'public/uploads')));
+
 app.get('/', (req, res) => {
-  console.log('test');
   res.render('homepage');
 });
 
